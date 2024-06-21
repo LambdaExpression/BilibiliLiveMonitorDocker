@@ -10,9 +10,9 @@ RUN apk update
 RUN apk add --no-cache openjdk8-jre
 RUN apk add --no-cache tzdata
 
-ADD start.sh /root
 ADD BiliBili_Danmuji.jar /root/BiliBili_Danmuji.jar
 ADD BilibiliLiveMonitor.jar /root/BilibiliLiveMonitor.jar
+ADD start.sh /root
 
 RUN chmod +x /root/start.sh
 

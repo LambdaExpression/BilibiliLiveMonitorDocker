@@ -3,6 +3,7 @@ services:
     image: mariadb:10.6
     container_name: bilibili_live_mariadb
     restart: always
+    tty: true
     environment:
       TZ: Asia/Shanghai
       MARIADB_ROOT_PASSWORD: nu4x599Wq7u0Bn8EABh3J91G
@@ -24,6 +25,7 @@ services:
     image: wojiushixiaobai/dataease:v2.6.1
     container_name: bilibili_live_dataease
     restart: always
+    tty: true
     environment:
       TZ: Asia/Shanghai
       DB_HOST: mysql
@@ -47,7 +49,7 @@ services:
       - net
 
   monitor:
-    image: bilibili_live_monitor:1.0
+    image: lambdaexpression/bilibili-live-monitor:latest
     container_name: bilibili_live_monitor
     restart: always
     tty: true
