@@ -1,0 +1,70 @@
+services:
+  mysql:
+    image: mariadb:10.6
+    container_name: bilibili_live_mariadb
+    restart: always
+    environment:
+      TZ: Asia/Shanghai
+      MARIADB_ROOT_PASSWORD: nu4x599Wq7u0Bn8EABh3J91G
+    volumes:
+      - /data/bilibiliLiveMonitor/mariadb/data:/var/lib/mysql
+      - /data/bilibiliLiveMonitor/mariadb/init:/docker-entrypoint-initdb.d
+    ports:
+      - 3609:3306
+    healthcheck:
+      test: "mysql -h127.0.0.1 -uroot -p$$MARIADB_ROOT_PASSWORD -e 'SHOW DATABASES;'"
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    networks:
+      - net
+
+  dataease:
+    image: wojiushixiaobai/dataease:v2.6.1
+    container_name: bilibili_live_dataease
+    restart: always
+    environment:
+      TZ: Asia/Shanghai
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: dataease
+      DB_USER: root
+      DB_PASSWORD: nu4x599Wq7u0Bn8EABh3J91G
+    ports:
+      - 8100:8100
+    volumes:
+      - /data/bilibiliLiveMonitor/dataease/data/static-resource:/opt/dataease2.0/data/static-resource
+      - /data/bilibiliLiveMonitor/dataease/data/geo:/opt/dataease2.0/data/geo
+      - /data/bilibiliLiveMonitor/dataease/data/appearance:/opt/dataease2.0/data/appearance
+      - /data/bilibiliLiveMonitor/dataease/data/exportData:/opt/dataease2.0/data/exportData
+      - /data/bilibiliLiveMonitor/dataease/logs:/opt/dataease2.0/logs
+      - /data/bilibiliLiveMonitor/dataease/cache:/opt/dataease2.0/cache
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - net
+
+  monitor:
+    image: bilibili_live_monitor:1.0
+    container_name: bilibili_live_monitor
+    restart: always
+    tty: true
+    environment:
+      DB_URL: jdbc:mysql://mysql:3306/bilibiliLiveMonitor?useUnicode=true&characterEncoding=utf8
+      DB_USER: root
+      DB_PASSWORD: nu4x599Wq7u0Bn8EABh3J91G
+      WS_URL: ws://monitor:23333/danmu/sub
+    ports:
+      - 23333:23333
+    volumes:
+      - /data/bilibiliLiveMonitor/monitor/log:/data/logs
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - net
+
+networks:
+  net:
