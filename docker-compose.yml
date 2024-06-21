@@ -53,9 +53,8 @@ services:
     tty: true
     environment:
       DB_URL: jdbc:mysql://mysql:3306/bilibiliLiveMonitor?useUnicode=true&characterEncoding=utf8
-      DB_USER: root
+      DB_UESR: root
       DB_PASSWORD: nu4x599Wq7u0Bn8EABh3J91G
-      WS_URL: ws://monitor:23333/danmu/sub
     ports:
       - 23333:23333
     volumes:
