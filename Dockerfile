@@ -7,7 +7,7 @@ RUN echo -e 'http://mirrors.ustc.edu.cn/alpine/v3.14/main/\nhttps://mirrors.ustc
 
 RUN apk update 
 
-RUN apk add --no-cache openjdk8
+RUN apk add --no-cache openjdk8-jre
 RUN apk add --no-cache tzdata
 
 ADD start.sh /root
