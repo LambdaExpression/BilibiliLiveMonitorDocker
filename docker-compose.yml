@@ -61,6 +61,7 @@ services:
       - 23333:23333
     volumes:
       - /data/bilibiliLiveMonitor/monitor/log:/data/logs
+      - /data/bilibiliLiveMonitor/monitor/data:/data/BiliBili_Danmuji
     depends_on:
       mysql:
         condition: service_healthy
