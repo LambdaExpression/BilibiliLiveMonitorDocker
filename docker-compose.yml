@@ -6,6 +6,7 @@ services:
     tty: true
     environment:
       TZ: Asia/Shanghai
+      MARIADB_DATABASE: bilibiliLiveMonitor
       MARIADB_ROOT_PASSWORD: nu4x599Wq7u0Bn8EABh3J91G
     volumes:
       - /data/bilibiliLiveMonitor/mariadb/data:/var/lib/mysql
@@ -21,35 +22,8 @@ services:
     networks:
       - net
 
-  dataease:
-    image: wojiushixiaobai/dataease:v2.6.1
-    container_name: bilibili_live_dataease
-    restart: always
-    tty: true
-    environment:
-      TZ: Asia/Shanghai
-      DB_HOST: mysql
-      DB_PORT: 3306
-      DB_NAME: dataease
-      DB_USER: root
-      DB_PASSWORD: nu4x599Wq7u0Bn8EABh3J91G
-    ports:
-      - 8100:8100
-    volumes:
-      - /data/bilibiliLiveMonitor/dataease/data/static-resource:/opt/dataease2.0/data/static-resource
-      - /data/bilibiliLiveMonitor/dataease/data/geo:/opt/dataease2.0/data/geo
-      - /data/bilibiliLiveMonitor/dataease/data/appearance:/opt/dataease2.0/data/appearance
-      - /data/bilibiliLiveMonitor/dataease/data/exportData:/opt/dataease2.0/data/exportData
-      - /data/bilibiliLiveMonitor/dataease/logs:/opt/dataease2.0/logs
-      - /data/bilibiliLiveMonitor/dataease/cache:/opt/dataease2.0/cache
-    depends_on:
-      mysql:
-        condition: service_healthy
-    networks:
-      - net
-
   monitor:
-    image: lambdaexpression/bilibili-live-monitor:latest
+    image: lambdaexpression/bilibili-live-monitor:48687d0
     container_name: bilibili_live_monitor
     restart: always
     tty: true
