@@ -33,6 +33,7 @@ services:
       DB_PASSWORD: nu4x599Wq7u0Bn8EABh3J91G
     ports:
       - 23333:23333
+      - 8023:8023
     volumes:
       - /data/bilibiliLiveMonitor/monitor/log:/data/logs
       - /data/bilibiliLiveMonitor/monitor/data:/data/BiliBili_Danmuji
