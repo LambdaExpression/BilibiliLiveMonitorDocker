@@ -16,6 +16,6 @@ ADD start.sh /root
 
 RUN chmod +x /root/start.sh
 
-ENV DB_URL= DB_UESR= DB_PASSWORD= WS_URL= REQUEST_URL=
+ENV DB_URL= DB_UESR= DB_PASSWORD= WS_URL= SERVICE_URL= FRONT_URL=
 
 CMD /root/start.sh;/bin/sh
