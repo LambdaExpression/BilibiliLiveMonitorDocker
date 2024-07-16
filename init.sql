@@ -28,7 +28,6 @@ DROP TABLE IF EXISTS `danmu_msg`;
 CREATE TABLE `danmu_msg` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '记录ID',
   `room_id` varchar(255) DEFAULT NULL COMMENT '房间号',
-  `anchor_name` varchar(255) DEFAULT NULL COMMENT '主播名称',
   `uid` varchar(255) DEFAULT NULL COMMENT '用户UID',
   `uname` varchar(255) DEFAULT NULL COMMENT '用户名称',
   `msg` varchar(1024) DEFAULT NULL COMMENT '弹幕内容',
@@ -56,7 +55,6 @@ DROP TABLE IF EXISTS `gift_data`;
 CREATE TABLE `gift_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '记录ID',
   `room_id` varchar(255) DEFAULT NULL COMMENT '房间ID',
-  `anchor_name` varchar(255) DEFAULT NULL COMMENT '主播名称',
   `gift_id` varchar(255) DEFAULT NULL COMMENT '礼物ID',
   `gift_type` tinyint(4) DEFAULT NULL COMMENT '礼物类型 (未知)',
   `gift_name` varchar(255) DEFAULT NULL COMMENT '礼物名称',
@@ -84,7 +82,6 @@ DROP TABLE IF EXISTS `interact_enter`;
 CREATE TABLE `interact_enter` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '记录ID',
   `room_id` varchar(255) DEFAULT NULL COMMENT '房间号',
-  `anchor_name` varchar(255) DEFAULT NULL COMMENT '主播名称',
   `uid` varchar(255) DEFAULT NULL COMMENT '用户UID',
   `uname` varchar(255) DEFAULT NULL COMMENT '用户名称',
   `timestamp` timestamp NULL DEFAULT NULL COMMENT '进入时间',
@@ -102,7 +99,6 @@ DROP TABLE IF EXISTS `interact_follow`;
 CREATE TABLE `interact_follow` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '记录ID',
   `room_id` varchar(255) DEFAULT NULL COMMENT '房间号',
-  `anchor_name` varchar(255) DEFAULT NULL COMMENT '主播名称',
   `uid` varchar(255) DEFAULT NULL COMMENT '用户UID',
   `uname` varchar(255) DEFAULT NULL COMMENT '用户名称',
   `timestamp` timestamp NULL DEFAULT NULL COMMENT '关注时间',
@@ -120,7 +116,6 @@ DROP TABLE IF EXISTS `online_rank_count`;
 CREATE TABLE `online_rank_count` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '记录ID',
   `room_id` varchar(255) DEFAULT NULL COMMENT '房间号',
-  `anchor_name` varchar(255) DEFAULT NULL COMMENT '主播名称',
   `count` int(11) DEFAULT NULL COMMENT '在线排名人数',
   `timestamp` timestamp NULL DEFAULT NULL COMMENT '统计排名时间',
   `create_time` timestamp NOT NULL DEFAULT current_timestamp() COMMENT '创建时间',
