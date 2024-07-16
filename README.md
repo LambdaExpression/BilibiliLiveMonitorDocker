@@ -27,7 +27,7 @@ services:
       - net
 
   monitor:
-    image: lambdaexpression/bilibili-live-monitor:48687d0
+    image: lambdaexpression/bilibili-live-monitor:laster
     container_name: bilibili_live_monitor
     restart: always
     tty: true
