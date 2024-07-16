@@ -56,6 +56,7 @@ networks:
 **/data/bilibiliLiveMonitor/mariadb/init** 目录下放置 init.sql 文件，docker容器启动时，进行表初始化
 
 
-启动完成后，先访问 http://127.0.0.1:23333 配置监控房间id和登录cookie，然后访问 http://127.0.0.1:8023/statistics/房间号id 就可以看到数据了。
+1. 启动完成后，先访问 http://127.0.0.1:23333 配置监控房间id和登录cookie。
+2. 等待直播开始一段时间后，再访问 http://127.0.0.1:8023/statistics/房间号id 就可以看到数据了。
 
 额外：访问时添加 showGitAppear=true 参数 http://127.0.0.1:8023/statistics/房间号id?showGitAppear=true 可以查看用户投喂饼图
