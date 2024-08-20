@@ -1,4 +1,4 @@
-FROM alpine:3.14.0
+FROM alpine:3.20
 
 MAINTAINER lambdaexpression <lambdaexpression@163.com>
 
