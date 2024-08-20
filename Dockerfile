@@ -3,7 +3,7 @@ FROM alpine:3.20
 MAINTAINER lambdaexpression <lambdaexpression@163.com>
 
 # 更改源
-RUN echo -e 'http://mirrors.ustc.edu.cn/alpine/v3.14/main/\nhttps://mirrors.ustc.edu.cn/alpine/v3.14/community' > /etc/apk/repositories
+# RUN echo -e 'http://mirrors.ustc.edu.cn/alpine/v3.14/main/\nhttps://mirrors.ustc.edu.cn/alpine/v3.14/community' > /etc/apk/repositories
 
 RUN apk update 
 
